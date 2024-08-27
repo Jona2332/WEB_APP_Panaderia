@@ -1,0 +1,174 @@
+﻿        @{
+            ViewData["Title"] = "Gestión de Clientes";
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+
+        <div class="page-wrapper">
+            <div class="content">
+                <div class="page-header">
+                    <div class="add-item d-flex">
+                        <div class="page-title">
+                            <h4>Lista de Clientes</h4>
+                            <h6>Gestionar Clientes</h6>
+                        </div>
+                    </div>
+                    <div class="page-btn">
+                        <a href="#" class="btn btn-added" data-bs-toggle="modal" data-bs-target="#add-cliente"><i data-feather="plus-circle" class="me-2"></i>Agregar Nuevo Cliente</a>
+                    </div>
+                </div>
+
+                <!-- Listado de Clientes -->
+                <div class="card table-list-card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table datanew">
+                                <thead>
+                                    <tr>
+                                        <th>Cédula</th>
+                                        <th>Nombre Completo</th>
+                                        <th>Teléfono</th>
+                                        <th>Correo Electrónico</th>
+                                        <th>Dirección Domicilio</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1234567890</td>
+                                        <td>Juan Pérez Gómez</td>
+                                        <td>555-1234</td>
+                                        <td>juan@example.com</td>
+                                        <td>Calle Principal #123</td>
+                                        <td>
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
+                                                <label class="form-check-label" for="flexSwitchCheckChecked">Activo</label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="p-2" data-bs-toggle="modal" data-bs-target="#edit-cliente">
+                                                <i data-feather="edit" class="feather-edit"></i>
+                                            </a>
+                                            <a href="#" class="p-2 confirm-text">
+                                                <i data-feather="trash-2" class="feather-trash-2"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <!-- Otros clientes precargados -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        <!-- Agregar Cliente -->
+        <div class="modal fade" id="add-cliente">
+            <div class="modal-dialog modal-dialog-centered custom-modal-two">
+                <div class="modal-content">
+                    <div class="page-wrapper-new p-0">
+                        <div class="content">
+                            <div class="modal-header border-0 custom-modal-header">
+                                <div class="page-title">
+                                    <h4>Agregar Cliente</h4>
+                                </div>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body custom-modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Cédula</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Nombre</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Primer Apellido</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Segundo Apellido</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Teléfono</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Correo Electrónico</label>
+                                                <input type="email" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="input-blocks">
+                                                <label>Dirección Domicilio</label>
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer-btn">
+                                        <button type="button" class="btn btn-cancel me-2" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-submit">Registrar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Editar Cliente -->
+        <div class="modal fade" id="edit-cliente">
+            <div class="modal-dialog modal-dialog-centered custom-modal-two">
+                <div class="modal-content">
+                    <div class="page-wrapper-new p-0">
+                        <div class="content">
+                            <div class="modal-header border-0 custom-modal-header">
+                                <div class="page-title">
+                                    <h4>Editar Cliente</h4>
+                                </div>
+                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body custom-modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="input-blocks">
+                                                <label>Cédula</label>
+                                                <input type="text" class="form-control" value="1234567890">
+                                            </div>
+                                        </div>
+                                        <!-- Otros campos del formulario -->
+                                    </div>
+                                    <div class="modal-footer-btn">
+                                        <button type="button" class="btn btn-cancel me-2" data-bs-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-submit">Guardar Cambios</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,127 @@
+﻿@{
+    ViewData["Title"] = "Accounting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Lista de Cuentas Contables</h4>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <table id="cuentas-tabla" class="table datanew">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Tipo</th>
+                            <th class="no-sort">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Caja</td>
+                            <td>Efectivo en caja</td>
+                            <td>Activo</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                    
+                                    <a href="@Url.Action("EditarCuenta", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Bancos</td>
+                            <td>Cuentas bancarias</td>
+                            <td>Activo</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                    
+                                    <a href="@Url.Action("EditarCuenta", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuentas por cobrar</td>
+                            <td>Deudas de clientes</td>
+                            <td>Activo</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                    
+                                    <a href="@Url.Action("EditarCuenta", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Inventario</td>
+                            <td>Inventario de productos</td>
+                            <td>Activo</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                    
+                                    <a href="@Url.Action("EditarCuenta", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Cuentas por pagar</td>
+                            <td>Deudas con proveedores</td>
+                            <td>Pasivo</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                   
+                                    <a href="@Url.Action("EditarCuenta", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Capital</td>
+                            <td>Capital de la empresa</td>
+                            <td>Patrimonio</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                    
+                                    <a href="@Url.Action("EditarCuenta", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

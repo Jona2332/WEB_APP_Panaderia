@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Accounting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Editar Transacción</h4>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form id="editar-transaccion-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="transaccion-tipo">Tipo de transacción:</label>
+                                <select id="transaccion-tipo" name="transaccion-tipo" class="select" required>
+                                    <option value="ingreso" selected>Ingreso</option>
+                                    <option value="gasto">Gasto</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="transaccion-cuenta">Cuenta contable:</label>
+                                <select id="transaccion-cuenta" name="transaccion-cuenta" class="select" required>
+                                    <option value="">Selecciona una cuenta</option>
+                                    <option value="1" selected>Caja</option>
+                                    <option value="2">Bancos</option>
+                                    <option value="3">Cuentas por cobrar</option>
+                                    <option value="4">Inventario</option>
+                                    <option value="5">Maquinaria y equipo</option>
+                                    <option value="6">Cuentas por pagar</option>
+                                    <option value="7">Préstamos bancarios</option>
+                                    <option value="8">Capital</option>
+                                    <option value="9">Ingresos por ventas</option>
+                                    <option value="10">Gastos de operación</option>
+                                    <option value="11">Gastos de nómina</option>
+                                    <option value="12">Gastos de publicidad</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="transaccion-monto">Monto:</label>
+                                <input type="number" id="transaccion-monto" name="transaccion-monto" step="0.01" value="5000" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="transaccion-fecha">Fecha:</label>
+                                <input type="date" id="transaccion-fecha" name="transaccion-fecha" value="2023-06-01" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="input-blocks">
+                                <label for="transaccion-descripcion">Descripción:</label>
+                                <textarea id="transaccion-descripcion" name="transaccion-descripcion" class="form-control" required>Ingresos por ventas de pan y pasteles</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Guardar cambios</button>
+                    <a href="javascript:history.back()" class="btn btn-primary mr-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

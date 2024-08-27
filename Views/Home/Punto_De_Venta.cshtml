@@ -1,0 +1,1386 @@
+﻿@{
+	ViewData["Title"] = "Home";
+	Layout = "~/Views/Shared/_Layout_PDV.cshtml";
+}
+@{
+	var id_usuario = Context.Session.GetString("id_usuario")?.ToString();
+	var usuario = Context.Session.GetString("Correo")?.ToString();
+	var nombre = Context.Session.GetString("Nombre")?.ToString();
+	var rol = Context.Session.GetString("Rol")?.ToString();
+
+}
+	<div id="global-loader">
+		<div class="whirly-loader"> </div>
+	</div>
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Header -->
+		<div class="header">
+
+			<!-- Logo -->
+			<div class="header-left active">
+			<a href="@Url.Action("Metricas","Home")" class="logo logo-normal">
+
+				<img src="~/assets/img/logo-pizzeria-panaderia.png" alt="">
+				</a>
+		
+			</div>
+			<!-- /Logo -->
+
+			<a id="mobile_btn" class="mobile_btn d-none" href="#sidebar">
+				<span class="bar-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</a>
+
+			<!-- Header Menu -->
+			<ul class="nav user-menu">
+
+				<!-- Search -->
+				<li class="nav-item nav-searchinputs">
+					<div class="top-nav-search">
+
+					</div>
+				</li>
+				<!-- /Search -->
+				<!-- Select Store -->
+				@* <li class="nav-item dropdown has-arrow main-drop select-store-dropdown">
+					<a href="javascript:void(0);" class="dropdown-toggle nav-link select-store" data-bs-toggle="dropdown">
+						<span class="user-info">
+							<span class="user-letter">
+								<img src="~/assets/img/store/store-01.png" alt="Store Logo" class="img-fluid">
+							</span>
+							<span class="user-detail">
+								<span class="user-name">Select Store</span>
+							</span>
+						</span>
+					</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="javascript:void(0);" class="dropdown-item">
+							<img src="~/assets/img/store/store-01.png" alt="Store Logo" class="img-fluid"> Grocery Alpha
+						</a>
+						<a href="javascript:void(0);" class="dropdown-item">
+							<img src="~/assets/img/store/store-02.png" alt="Store Logo" class="img-fluid"> Grocery Apex
+						</a>
+						<a href="javascript:void(0);" class="dropdown-item">
+							<img src="~/assets/img/store/store-03.png" alt="Store Logo" class="img-fluid"> Grocery Bevy
+						</a>
+						<a href="javascript:void(0);" class="dropdown-item">
+							<img src="~/assets/img/store/store-04.png" alt="Store Logo" class="img-fluid"> Grocery Eden
+						</a>
+					</div>
+				</li> *@
+				<!-- /Select Store -->
+			
+
+				<li class="nav-item nav-item-box">
+					<a href="javascript:void(0);" id="btnFullscreen">
+						<i data-feather="maximize"></i>
+					</a>
+				</li>
+
+				<li class="nav-item dropdown has-arrow main-drop">
+					<a href="javascript:void(0);" class="dropdown-toggle nav-link userset" data-bs-toggle="dropdown">
+						<span class="user-info">
+							<span class="user-letter">
+							<img src="~/assets/img/logo-pizzeria.png" alt="" class="img-fluid">
+							</span>
+							<span class="user-detail">
+								<span class="user-name">@nombre</span>
+								<span class="user-role">@rol</span>
+							</span>
+						</span>
+					</a>
+					<div class="dropdown-menu menu-drop-user">
+						<div class="profilename">
+							<div class="profileset">
+								<span class="user-img">
+									<img src="~/assets/img/logo-pizzeria.png" alt="">
+									<span class="status online"></span>
+								</span>
+								<div class="profilesets">
+									<h6>@nombre</h6>
+									<h5>@rol</h5>
+								</div>
+							</div>
+							<hr class="m-0">
+				@* 			<a class="dropdown-item" href="profile.html"> <i class="me-2" data-feather="user"></i> My Profile</a>
+							<a class="dropdown-item" href="general-settings.html"><i class="me-2" data-feather="settings"></i>Settings</a> *@
+							<hr class="m-0">
+							<a class="dropdown-item logout pb-0" href="signin.html"><img src="~/assets/img/icons/log-out.svg" class="me-2" alt="img">Cerrar Sesión</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+			<!-- /Header Menu -->
+			<!-- Mobile Menu -->
+			<div class="dropdown mobile-user-menu">
+				<a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+	@* 				<a class="dropdown-item" href="profile.html">My Profile</a>
+					<a class="dropdown-item" href="general-settings.html">Settings</a> *@
+					<a class="dropdown-item" href="signin.html">Cerrar Sesión</a>
+				</div>
+			</div>
+			<!-- /Mobile Menu -->
+		</div>
+		<!-- Header -->
+
+		<div class="page-wrapper pos-pg-wrapper ms-0">
+			<div class="content pos-design p-0">
+				<div class="btn-row d-sm-flex align-items-center">
+				@*<a href="javascript:void(0);" class="btn btn-secondary mb-xs-3" data-bs-toggle="modal" data-bs-target="#orders"><span class="me-1 d-flex align-items-center"><i data-feather="shopping-cart" class="feather-16"></i></span>Ver Ordenes</a>
+					 <a href="javascript:void(0);" class="btn btn-info"><span class="me-1 d-flex align-items-center"><i data-feather="rotate-cw" class="feather-16"></i></span>Reset</a>
+					<a href="javascript:void(0);" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#recents"><span class="me-1 d-flex align-items-center"><i data-feather="refresh-ccw" class="feather-16"></i></span>Transaction</a> *@
+				</div>
+
+				<div class="row align-items-start pos-wrapper">
+					<div class="col-md-12 col-lg-8">
+						<div class="pos-categories tabs_wrapper">
+							<h5>Categorias</h5>
+							<p>Seleccione de las categorías de abajo</p>
+							<ul class="tabs owl-carousel pos-category">
+								<li id="panaderia">
+									<a>
+										<img src="~/assets/img/bread.png" alt="Categories">
+									</a>
+									<h6><a>Panadería</a></h6>
+								</li>
+								<li id="pizzeria">
+									<a>
+										<img src="~/assets/img/pizza.png" alt="Categories">
+									</a>
+									<h6><a>Pizzería</a></h6>
+								</li>
+								<li id="pastas">
+									<a>
+										<img src="~/assets/img/spaguetti.png" alt="Categories">
+									</a>
+									<h6><a>Pastas</a></h6>
+								</li>
+								<li id="bebidas">
+									<a>
+										<img src="~/assets/img/softdrink.png" alt="Categories">
+									</a>
+									<h6><a>Bebidas</a></h6>
+								</li>
+
+							</ul>
+							<div class="pos-products">
+								<div class="d-flex align-items-center justify-content-between">
+									<h5 class="mb-3">Productos</h5>
+								</div>
+								<p>Aquí se presentan todos los productos por categoría</p>
+								<div class="tabs_container">
+									<div class="tab_content active" data-tab="all">
+									
+									</div>
+									<div class="tab_content" data-tab="panaderia">
+										<div class="row">
+
+										<!-- Aquí se inyectan los productos dinámicamente -->
+										</div>
+									</div>
+
+									<div class="tab_content" data-tab="pizzeria">
+										<div class="row">
+										<!-- Aquí se inyectan los productos dinámicamente -->
+										</div>
+									</div>
+
+									<div class="tab_content" data-tab="pastas">
+										<div class="row">
+											<!-- Aquí se inyectan los productos dinámicamente -->
+										</div>
+									</div>
+									<div class="tab_content" data-tab="bebidas">
+										<div class="row">
+											<!-- Aquí se inyectan los productos dinámicamente -->
+										</div>
+									</div>
+
+								
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-12 col-lg-4 ps-0">
+						<aside class="product-order-list">
+						
+							<div class="head d-flex align-items-center justify-content-between w-100">
+								<div class="">
+									<h5>¿Pedido Express?</h5>
+								<div class="status-toggle modal-status d-flex justify-content-between align-items-center me-3">
+									<input type="checkbox" id="express-order-checkbox" class="check">
+									<label for="express-order-checkbox" class="checktoggle"></label>
+								</div>
+							</div>
+
+							</div>
+						<div class="input-blocks" id="customerNameInput">
+							<label>Nombre del cliente</label>
+							<input type="text" class="form-control" name="nombre" required>
+						</div>
+						<div class="customer-info block-section  hidden">
+								<h6>Informacion de cliente</h6>
+								<div class="input-block d-flex align-items-center">
+									 <div class="flex-grow-1">
+									<p>Agregar Cliente</p>
+									</div> 
+									<a href="#" class="btn btn-primary btn-icon" data-bs-toggle="modal" data-bs-target="#create"><i data-feather="user-plus" class="feather-16"></i></a>
+								</div> 
+							</div>
+
+						<div class="product-added block-section">
+							<div class="head-text d-flex align-items-center justify-content-between">
+								<h6 class="d-flex align-items-center mb-0">Productos Agregados</h6>
+								<a href="javascript:void(0);" class="d-flex align-items-center text-danger" id="remove-all"><span class="me-1"><i data-feather="x" class="feather-16"></i></span>Remover Todo</a>
+							</div>
+							<div class="product-wrap" id="product-list">
+								<!-- Los productos agregados se inyectarán aquí -->
+							</div>
+						</div>
+
+							<div class="block-section">
+								<div class="selling-info">
+						
+								</div>
+								<div class="order-total">
+									<table class="table table-responsive table-borderless">
+									
+										<tr>
+											<td>Total</td>
+										<td class="text-end">₡0,00</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+
+						<div class="block-section payment-method">
+							<h6>Método de Pago</h6>
+							<div class="row d-flex align-items-center justify-content-center methods">
+								<div class="col-md-6 col-lg-3 item">
+									<div class="default-cover">
+										<a href="javascript:void(0);">
+											<img src="~/assets/img/icons/cash-pay.svg" alt="Payment Method">
+											<span>Efectivo</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-3 item">
+									<div class="default-cover">
+										<a href="javascript:void(0);">
+											<img src="~/assets/img/icons/credit-card.svg" alt="Payment Method">
+											<span>Tarjeta</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-3 item">
+									<div class="default-cover">
+										<a href="javascript:void(0);">
+											<img src="~/assets/img/icons/qr-scan.svg" alt="Payment Method">
+											<span>Sinpe</span>
+										</a>
+									</div>
+								</div>
+								<div class="col-md-6 col-lg-3 item">
+									<div class="default-cover">
+										<a href="javascript:void(0);">
+											<img src="~/assets/img/icons/purchase1.svg" alt="Payment Method">
+											<span>Uber Eats</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+							<div class="btn-row d-sm-flex align-items-center justify-content-between">
+							<button id="payButton" class="btn btn-success btn-icon flex-fill"><span class="me-1 d-flex align-items-center"><i data-feather="credit-card" class="feather-16"></i></span>Pagar</button>
+							</div>
+
+						</aside>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!-- /Main Wrapper -->
+	<!-- Payment Completed -->
+	<div class="modal fade modal-default" id="payment-completed" aria-labelledby="payment-completed">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-body text-center">
+					<form action="pos.html">
+						<div class="icon-head">
+							<a href="javascript:void(0);">
+								<i data-feather="check-circle" class="feather-40"></i>
+							</a>
+						</div>
+						<h4>Pago Completado</h4>
+						<p class="mb-0">¿Quiere imprimir el recibo u ordenar de nuevo?</p>
+						<div class="modal-footer d-sm-flex justify-content-between">
+						<button type="button" class="btn btn-primary flex-fill" data-bs-toggle="modal" data-bs-target="#print-receipt" id="printReceiptButton">Imprimir Recibo<i class="feather-arrow-right-circle icon-me-5"></i></button>
+						<a href="@Url.Action("Punto_De_Venta","Home")" class="btn btn-secondary flex-fill">Siguiente Orden<i class="feather-arrow-right-circle icon-me-5"></i></a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="qrModalLabel">Escanee el código QR para realizar el pago</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div id="qrcode" style="text-align: center;">
+					<!-- El código QR se insertará aquí -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<!-- /Payment Completed -->
+<!-- Order detail -->
+<div class="modal fade modal-default" id="detalle-orden" aria-labelledby="detalle-orden">
+	<div class="modal-dialog modal-lg-custom modal-dialog-centered">
+		<div class="modal-content">
+			<div class="d-flex justify-content-end">
+				<button type="button" class="close p-0" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="icon-head text-center">
+					<a href="javascript:void(0);">
+						<img src="~/assets/img/logo-pizzeria.png" width="100" height="30" alt="Receipt Logo">
+					</a>
+				</div>
+				<div class="text-center info text-center">
+					<h6>3 Rios Pizzeria.,</h6>
+					<p class="mb-0">Telefono: +506 2279 8626 / 2278 1596</p>
+					<p class="mb-0">Correo: <a>tresriospizzeria@gmail.com</a></p>
+				</div>
+				<div class="tax-invoice">
+					<h6 class="text-center">Detalle Orden</h6>
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<div class="invoice-user-name"><span>Nombre: </span><span id="ordenCustomerNombre"></span></div>
+							<div class="invoice-user-name"><span>Teléfono: </span><span id="ordenCustomerTelefono"></span></div>
+							<div class="invoice-user-name"><span>Dirección: </span><span id="ordenCustomerDireccion"></span></div>
+						</div>
+						@* <div class="col-sm-12 col-md-6">
+							<div class="invoice-user-name"><span>Fecha: </span><span id="ordenFecha"></span></div>
+						</div> *@
+					</div>
+				</div>
+				<table class="table-borderless w-100 table-fit">
+					<thead>
+						<tr>
+							<th># Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th>Tipo</th>
+							<th>Sabores</th>
+							<th>Descripcion</th>
+							<th>Nota</th>
+							<th class="text-end">Total</th>
+						</tr>
+					</thead>
+					<tbody id="ordenProductList">
+						<!-- Productos se agregarán aquí -->
+					</tbody>
+				</table>
+				<div class="text-center invoice-bar">
+					<div class="d-flex justify-content-between">
+						<span>Total por Pagar :</span>
+						<span id="ordenTotalAmount" class="text-end"></span>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer d-sm-flex justify-content-between">
+				<button type="button" data-bs-dismiss="modal" class="btn btn-primary flex-fill">Cancelar<i class="feather-arrow-right-circle icon-me-5"></i></button>
+				<a class="btn btn-secondary flex-fill" id="confirmOrderButton">Confirmar Orden<i class="feather-arrow-right-circle icon-me-5"></i></a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- /Order detail -->
+
+	<!-- Print Receipt -->
+<div class="modal fade modal-default" id="print-receipt" aria-labelledby="print-receipt">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content" id="receipt-content">
+			<div class="d-flex justify-content-end">
+				<button type="button" class="close p-0" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="icon-head text-center">
+					<a href="javascript:void(0);">
+						<img src="~/assets/img/logo-pizzeria.png" width="100" height="30" alt="Receipt Logo">
+					</a>
+				</div>
+				<div class="text-center info text-center">
+					<h6>3 Rios Pizzeria.,</h6>
+					<p class="mb-0">Telefono: +506 2279 8626 / 2278 1596</p>
+					<p class="mb-0">Correo: <a>tresriospizzeria@gmail.com</a></p>
+				</div>
+				<div class="tax-invoice">
+					<h6 class="text-center">Factura</h6>
+					<div class="row">
+						<div class="col-sm-12 col-md-6">
+							<div class="invoice-user-name"><span>Nombre: </span><span id="receiptCustomerNombre"></span></div>
+						</div>
+					</div>
+				</div>
+				<table class="table-borderless w-100 table-fit">
+					<thead>
+						<tr>
+							<th># Producto</th>
+							<th>Precio</th>
+							<th>Cantidad</th>
+							<th class="text-end">Total</th>
+						</tr>
+					</thead>
+					<tbody id="receiptProductList">
+						<!-- Productos se agregarán aquí -->
+					</tbody>
+				</table>
+				<div class="text-center invoice-bar">
+					<p>Gracias por comprar con nosotros. Vuelva Pronto</p>
+					<a href="javascript:void(0);" class="btn btn-primary" id="downloadReceiptButton">Descargar</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- /Print Receipt -->
+	
+<!-- /Agregar Cliente -->
+<div class="modal fade" id="create" tabindex="-1" aria-labelledby="create" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Crear</h5>
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<form id="create-customer-form">
+					<div class="row">
+						<div class="col-lg-6 col-sm-12 col-12">
+							<div class="input-blocks">
+								<label>Nombre (obligatorio)</label>
+								<input type="text" class="form-control" name="nombre" required>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-12">
+							<div class="input-blocks">
+								<label>Correo (opcional)</label>
+								<input  type="email" class="form-control" name="correo">
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-12">
+							<div class="input-blocks">
+								<label>Teléfono (obligatorio)</label>
+								<input type="text" class="form-control" name="telefono" required>
+							</div>
+						</div>
+						<div class="col-lg-6 col-sm-12 col-12">
+							<div class="input-blocks">
+								<label>Dirección (obligatorio)</label>
+								<input type="text" class="form-control" name="direccion" required>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer d-sm-flex justify-content-end">
+						<button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+						<button type="submit" class="btn btn-submit me-2">Aceptar</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Elementos ocultos para guardar la información del cliente -->
+<div id="customerNombreHidden" class="d-none"></div>
+<div id="customerCorreoHidden" class="d-none"></div>
+<div id="customerTelefonoHidden" class="d-none"></div>
+<div id="customerDireccionHidden" class="d-none"></div>
+
+
+<!-- /Tipo de Pizza -->
+<div class="modal fade" id="tipo-pizza" tabindex="-1" aria-labelledby="create" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">Seleccione Tipos de Pizza</h5>
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body checkboxes-container">
+				<!-- Contenedor para el contenido dinámico -->
+				<div class="dynamic-content">
+					<!-- El contenido dinámico se inyectará aquí -->
+				</div>
+				<div class="modal-footer d-sm-flex justify-content-end">
+					<button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Cancelar</button>
+					<button type="button" id="accept-button" class="btn btn-submit me-2" data-bs-dismiss="modal">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Recent Transactions -->
+<div class="modal fade pos-modal" id="recents" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header p-4">
+				<h5 class="modal-title">Recent Transactions</h5>
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body p-4">
+				<div class="tabs-sets">
+					<ul class="nav nav-tabs" id="myTab" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="purchase-tab" data-bs-toggle="tab" data-bs-target="#purchase" type="button" aria-controls="purchase" aria-selected="true" role="tab">Purchase</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="payment-tab" data-bs-toggle="tab" data-bs-target="#payment" type="button" aria-controls="payment" aria-selected="false" role="tab">Payment</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="return-tab" data-bs-toggle="tab" data-bs-target="#return" type="button" aria-controls="return" aria-selected="false" role="tab">Return</button>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="purchase" role="tabpanel" aria-labelledby="purchase-tab">
+							<div class="table-top">
+								<div class="search-set">
+									<div class="search-input">
+										<a class="btn btn-searchset d-flex align-items-center h-100"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+									</div>
+								</div>
+								<div class="wordset">
+									<ul>
+										<li>
+											<a class="d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+										</li>
+										<li>
+											<a class="d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"><img src="assets/img/icons/excel.svg" alt="img"></a>
+										</li>
+										<li>
+											<a class="d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Print"><i data-feather="printer" class="feather-rotate-ccw"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table datanew">
+									<thead>
+										<tr>
+											<th>Date</th>
+											<th>Reference</th>
+											<th>Customer</th>
+											<th>Amount	</th>
+											<th class="no-sort">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0101</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0102</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0103</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0104</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0105</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0106</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0107</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="payment" role="tabpanel">
+							<div class="table-top">
+								<div class="search-set">
+									<div class="search-input">
+										<a class="btn btn-searchset d-flex align-items-center h-100"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+									</div>
+								</div>
+								<div class="wordset">
+									<ul>
+										<li>
+											<a class="d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+										</li>
+										<li>
+											<a class="d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"><img src="assets/img/icons/excel.svg" alt="img"></a>
+										</li>
+										<li>
+											<a class="d-flex align-items-center justify-content-center" data-bs-toggle="tooltip" data-bs-placement="top" title="Print"><i data-feather="printer" class="feather-rotate-ccw"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table datanew">
+									<thead>
+										<tr>
+											<th>Date</th>
+											<th>Reference</th>
+											<th>Customer</th>
+											<th>Amount	</th>
+											<th class="no-sort">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0101</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0102</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0103</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0104</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0105</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0106</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0107</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="return" role="tabpanel">
+							<div class="table-top">
+								<div class="search-set">
+									<div class="search-input">
+										<a class="btn btn-searchset d-flex align-items-center h-100"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+									</div>
+								</div>
+								<div class="wordset">
+									<ul>
+										<li>
+											<a data-bs-toggle="tooltip" data-bs-placement="top" title="Pdf" class="d-flex align-items-center justify-content-center"><img src="assets/img/icons/pdf.svg" alt="img"></a>
+										</li>
+										<li>
+											<a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel" class="d-flex align-items-center justify-content-center"><img src="assets/img/icons/excel.svg" alt="img"></a>
+										</li>
+										<li>
+											<a data-bs-toggle="tooltip" data-bs-placement="top" title="Print" class="d-flex align-items-center justify-content-center"><i data-feather="printer" class="feather-rotate-ccw"></i></a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table datanew">
+									<thead>
+										<tr>
+											<th>Date</th>
+											<th>Reference</th>
+											<th>Customer</th>
+											<th>Amount	</th>
+											<th class="no-sort">Action</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0101</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0102</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0103</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0104</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0105</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0106</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td>19 Jan 2023</td>
+											<td>INV/SL0107</td>
+											<td>Walk-in Customer</td>
+											<td>$1500.00</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="eye" class="feather-eye"></i></a>
+													<a class="me-2 p-2" href="javascript:void(0);"><i data-feather="edit" class="feather-edit"></i></a>
+													<a class="p-2 confirm-text" href="javascript:void(0);"><i data-feather="trash-2" class="feather-trash-2"></i></a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Recent Transactions -->
+<!-- Recent Transactions -->
+<div class="modal fade pos-modal" id="orders" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-md modal-dialog-centered" role="document">
+		<div class="modal-content">
+			<div class="modal-header p-4">
+				<h5 class="modal-title">Orders</h5>
+				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+			</div>
+			<div class="modal-body p-4">
+				<div class="tabs-sets">
+					<ul class="nav nav-tabs" id="myTabs" role="tablist">
+						<li class="nav-item" role="presentation">
+							<button class="nav-link active" id="onhold-tab" data-bs-toggle="tab" data-bs-target="#onhold" type="button" aria-controls="onhold" aria-selected="true" role="tab">Onhold</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="unpaid-tab" data-bs-toggle="tab" data-bs-target="#unpaid" type="button" aria-controls="unpaid" aria-selected="false" role="tab">Unpaid</button>
+						</li>
+						<li class="nav-item" role="presentation">
+							<button class="nav-link" id="paid-tab" data-bs-toggle="tab" data-bs-target="#paid" type="button" aria-controls="paid" aria-selected="false" role="tab">Paid</button>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane fade show active" id="onhold" role="tabpanel" aria-labelledby="onhold-tab">
+							<div class="table-top">
+								<div class="search-set w-100 search-order">
+									<div class="search-input w-100">
+										<a class="btn btn-searchset d-flex align-items-center h-100"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+									</div>
+								</div>
+							</div>
+							<div class="order-body">
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-secondary d-inline-block mb-4">Order ID : #666659</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Botsford</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$900</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">29-08-2023 13:39:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-sm-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-secondary d-inline-block mb-4">Order ID : #666660</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Smith</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$15000</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">30-08-2023 15:59:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+								<div class="default-cover p-4">
+									<span class="badge bg-secondary d-inline-block mb-4">Order ID : #666661</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">John David</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$2000</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">01-09-2023 13:15:00</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4 mb-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="tab-pane fade" id="unpaid" role="tabpanel">
+							<div class="table-top">
+								<div class="search-set w-100 search-order">
+									<div class="search-input">
+										<a class="btn btn-searchset d-flex align-items-center h-100"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+									</div>
+								</div>
+
+							</div>
+							<div class="order-body">
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-info d-inline-block mb-4">Order ID : #666662</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Anastasia</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$2500</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">10-09-2023 17:15:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-info d-inline-block mb-4">Order ID : #666663</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Lucia</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$1500</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">11-09-2023 14:50:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-info d-inline-block mb-4">Order ID : #666664</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Diego</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$30000</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">12-09-2023 17:22:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4 mb-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="paid" role="tabpanel">
+							<div class="table-top">
+								<div class="search-set w-100 search-order">
+									<div class="search-input">
+										<a class="btn btn-searchset d-flex align-items-center h-100"><img src="assets/img/icons/search-white.svg" alt="img"></a>
+									</div>
+								</div>
+							</div>
+							<div class="order-body">
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-primary d-inline-block mb-4">Order ID : #666665</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Hugo</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$5000</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">13-09-2023 19:39:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-primary d-inline-block mb-4">Order ID : #666666</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">Antonio</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$7000</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">15-09-2023 18:39:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+								<div class="default-cover p-4 mb-4">
+									<span class="badge bg-primary d-inline-block mb-4">Order ID : #666667</span>
+									<div class="row">
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr class="mb-3">
+													<td>Cashier</td>
+													<td class="colon">:</td>
+													<td class="text">admin</td>
+												</tr>
+												<tr>
+													<td>Customer</td>
+													<td class="colon">:</td>
+													<td class="text">MacQuoid</td>
+												</tr>
+											</table>
+										</div>
+										<div class="col-sm-12 col-md-6 record mb-3">
+											<table>
+												<tr>
+													<td>Total</td>
+													<td class="colon">:</td>
+													<td class="text">$7050</td>
+												</tr>
+												<tr>
+													<td>Date</td>
+													<td class="colon">:</td>
+													<td class="text">17-09-2023 19:39:11</td>
+												</tr>
+											</table>
+										</div>
+									</div>
+									<p class="p-4 mb-4">Customer need to recheck the product once</p>
+									<div class="btn-row d-flex align-items-center justify-content-between">
+										<a href="javascript:void(0);" class="btn btn-info btn-icon flex-fill">Open</a>
+										<a href="javascript:void(0);" class="btn btn-danger btn-icon flex-fill">Products</a>
+										<a href="javascript:void(0);" class="btn btn-success btn-icon flex-fill">Print</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Recent Transactions -->
+<script src="https://js.stripe.com/v3/"></script>
+
+
+	

@@ -1,0 +1,180 @@
+﻿@model WEB_APP_Panaderia.Models.BalanceGeneralViewModel
+
+@{
+    ViewBag.Title = "Balance General";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Módulo de Contabilidad</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="/Contabilidad">Contabilidad</a></li>
+                        <li class="breadcrumb-item active">Balance General</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Generar Balance General</h4>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="GenerarBalanceGeneral" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label for="fechaCorte" class="form-label">Fecha de Corte</label>
+                                        <input type="date" id="fechaCorte" name="fechaCorte" class="form-control" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-flex align-items-end">
+                                    <button type="submit" class="btn btn-primary">
+                                        <i class="fas fa-balance-scale me-2"></i>Generar Balance General
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model != null)
+        {
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title mb-0">Balance General al @Model.FechaCorte.ToString("yyyy-MM-dd")</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="text-primary">Activos</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Código</th>
+                                                    <th>Cuenta</th>
+                                                    <th class="text-end">Saldo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var activo in Model.Activos)
+                                                {
+                                                    <tr>
+                                                        <td>@activo.CodigoCuenta</td>
+                                                        <td>@activo.NombreCuenta</td>
+                                                        <td class="text-end">@activo.SaldoActual.ToString("C")</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="table-primary">
+                                                    <th colspan="2">Total Activos</th>
+                                                    <th class="text-end">@Model.TotalActivos.ToString("C")</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="text-primary">Pasivos</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Código</th>
+                                                    <th>Cuenta</th>
+                                                    <th class="text-end">Saldo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var pasivo in Model.Pasivos)
+                                                {
+                                                    <tr>
+                                                        <td>@pasivo.CodigoCuenta</td>
+                                                        <td>@pasivo.NombreCuenta</td>
+                                                        <td class="text-end">@pasivo.SaldoActual.ToString("C")</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="table-primary">
+                                                    <th colspan="2">Total Pasivos</th>
+                                                    <th class="text-end">@Model.TotalPasivos.ToString("C")</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    <h5 class="text-primary mt-4">Capital</h5>
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped">
+                                            <thead class="table-light">
+                                                <tr>
+                                                    <th>Código</th>
+                                                    <th>Cuenta</th>
+                                                    <th class="text-end">Saldo</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var capital in Model.Capital)
+                                                {
+                                                    <tr>
+                                                        <td>@capital.CodigoCuenta</td>
+                                                        <td>@capital.NombreCuenta</td>
+                                                        <td class="text-end">@capital.SaldoActual.ToString("C")</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                            <tfoot>
+                                                <tr class="table-primary">
+                                                    <th colspan="2">Total Capital</th>
+                                                    <th class="text-end">@Model.TotalCapital.ToString("C")</th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+
+                                    <div class="table-responsive mt-4">
+                                        <table class="table table-bordered table-primary">
+                                            <tbody>
+                                                <tr class="font-weight-bold">
+                                                    <th>Total Pasivo + Capital</th>
+                                                    <th class="text-end">@Model.TotalPasivoCapital.ToString("C")</th>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @if (Model.TotalActivos == Model.TotalPasivoCapital)
+                            {
+                                <div class="alert alert-success mt-4">
+                                    <i class="fas fa-check-circle me-2"></i>El balance cuadra correctamente. Activos = Pasivos + Capital
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="alert alert-danger mt-4">
+                                    <i class="fas fa-exclamation-triangle me-2"></i>¡Advertencia! El balance no cuadra. Activos ≠ Pasivos + Capital
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

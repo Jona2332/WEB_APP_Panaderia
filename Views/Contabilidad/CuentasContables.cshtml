@@ -1,0 +1,63 @@
+﻿@model List<WEB_APP_Panaderia.Entities.CuentaContableEntity>
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Módulo de Contabilidad</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                        <li class="breadcrumb-item">Contabilidad</li>
+                        <li class="breadcrumb-item active">Cuentas Contables</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="col-auto">
+                    <a asp-action="CrearCuentaContable" class="btn btn-primary">
+                        <i class="fas fa-plus-circle me-2"></i>Crear Nueva Cuenta
+                    </a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table datanew">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Saldo Actual</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var cuenta in Model)
+                            {
+                                <tr>
+                                    <td>@cuenta.CodigoCuenta</td>
+                                    <td>@cuenta.NombreCuenta</td>
+                                    <td>@cuenta.TipoCuenta</td>
+                                    <td>@cuenta.SaldoActual.ToString("C")</td>
+                                    <td>
+                                        <a asp-action="EditarCuentaContable" asp-route-id="@cuenta.IdCuenta" class="btn btn-sm btn-primary me-2">
+                                            <i class="fas fa-edit me-1"></i>Editar
+                                        </a>
+                                        <form asp-action="EliminarCuentaContable" asp-route-id="@cuenta.IdCuenta" method="post" style="display:inline;">
+                                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de eliminar esta cuenta?');">
+                                                <i class="fas fa-trash-alt me-1"></i>Eliminar
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

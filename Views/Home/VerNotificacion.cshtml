@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header row">
+            <div class="col">
+                <div class="page-title">
+                    <h4>Detalle de la Notificación</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            <h5>Título</h5>
+                            <p>¡Disfruta de nuestras deliciosas tortas de Pascua con un 20% de descuento!</p>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <h5>Mensaje</h5>
+                            <p>Prueba nuestras nuevas pizzas de jamón serrano y vegetariana.</p>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                        <a href="javascript:history.back()" class="btn btn-primary mr-2">Volver</a>
+                     </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>Fecha de Creación</label>
+                            <div class="badge badge-primary ml-2">2023-04-20</div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label>Fecha de Vencimiento</label>
+                            <div class="badge badge-warning ml-2">2023-05-15</div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <div class="badge badge-success ml-2">Activa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

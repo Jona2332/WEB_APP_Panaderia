@@ -1,0 +1,216 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title">Bandeja de Notificaciones</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-12">
+                <div class="compose-btn">
+                    <a href="@Url.Action("CrearNotificaciones", "Home")" class="btn btn-primary btn-block w-100">
+                        Redactar
+                    </a>
+                </div>
+                <ul class="inbox-menu">
+                    
+                    <li>
+                        <a href="javascript:void(0);"><i class="far fa-star"></i> Importantes</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);"><i class="far fa-paper-plane"></i> Enviados</a>
+                    </li>
+
+                  <!-- <li>
+                        <a href="javascript:void(0);"><i class="far fa-trash-alt"></i> Papelera</a>
+                    </li>-->
+                </ul>
+            </div>
+            <div class="col-lg-9 col-md-12">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-inbox table-hover">
+                                <thead>
+                                    <tr>
+                                        <th colspan="7">
+                                            <label class="checkboxs">
+                                                <input type="checkbox" id="select-all">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="unread clickable-row">
+                                        <td>
+                                            <label class="checkboxs">
+                                                <input type="checkbox">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </td>
+                                        <td><span class="mail-important"><i class="fas fa-star starred"></i></span></td>
+                                        <td class="name">Promoción de Pascua</td>
+                                        <td class="subject">¡Disfruta de nuestras deliciosas tortas de Pascua con un 20% de descuento!</td>
+                                        <td><i class="fas fa-paperclip"></i></td>
+                                        <td class="mail-date">13:14</td>
+                                        <td>
+                                            <div class="edit-delete-action">
+                                                <a href="@Url.Action("VerNotificacion", "Home")" class="p-2">
+                                                    <i data-feather="eye" class="feather-eye"></i>
+                                                </a>
+                                                <a href="@Url.Action("EditarNotificaciones", "Home")" class="p-2">
+                                                    <i data-feather="edit" class="feather-edit"></i>
+                                                </a>
+                                                <a href="#" class="confirm-text p-2">
+                                                    <i data-feather="trash-2" class="feather-trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="unread clickable-row">
+                                        <td>
+                                            <label class="checkboxs">
+                                                <input type="checkbox">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </td>
+                                        <td><span class="mail-important"><i class="far fa-star"></i></span></td>
+                                        <td class="name">Nuevos sabores de pizza</td>
+                                        <td class="subject">¡Prueba nuestras nuevas pizzas de jamón serrano y vegetariana!</td>
+                                        <td></td>
+                                        <td class="mail-date">08:42</td>
+                                        <td>
+                                            <div class="edit-delete-action">
+                                                <a href="@Url.Action("VerNotificacion", "Home")" class="p-2">
+                                                    <i data-feather="eye" class="feather-eye"></i>
+                                                </a>
+                                                <a href="@Url.Action("EditarNotificaciones", "Home")" class="p-2">
+                                                    <i data-feather="edit" class="feather-edit"></i>
+                                                </a>
+                                                <a href="#" class="confirm-text p-2">
+                                                    <i data-feather="trash-2" class="feather-trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="clickable-row">
+                                        <td>
+                                            <label class="checkboxs">
+                                                <input type="checkbox">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </td>
+                                        <td><span class="mail-important"><i class="far fa-star"></i></span></td>
+                                        <td class="name">Encuesta de satisfacción</td>
+                                        <td class="subject">Comparte tu opinión y ayúdanos a mejorar nuestros productos y servicios.</td>
+                                        <td></td>
+                                        <td class="mail-date">30 Nov</td>
+                                        <td>
+                                            <div class="edit-delete-action">
+                                                <a href="@Url.Action("VerNotificacion", "Home")" class="p-2">
+                                                    <i data-feather="eye" class="feather-eye"></i>
+                                                </a>
+                                                <a href="@Url.Action("EditarNotificaciones", "Home")" class="p-2">
+                                                    <i data-feather="edit" class="feather-edit"></i>
+                                                </a>
+                                                <a href="#" class="confirm-text p-2">
+                                                    <i data-feather="trash-2" class="feather-trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="unread clickable-row">
+                                        <td>
+                                            <label class="checkboxs">
+                                                <input type="checkbox">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </td>
+                                        <td><span class="mail-important"><i class="far fa-star"></i></span></td>
+                                        <td class="name">Oferta de empanadas</td>
+                                        <td class="subject">¡Llévate una docena de empanadas de carne o pollo por solo $10!</td>
+                                        <td></td>
+                                        <td class="mail-date">18 Sep</td>
+                                        <td>
+                                            <div class="edit-delete-action">
+                                                <a href="@Url.Action("VerNotificacion", "Home")" class="p-2">
+                                                    <i data-feather="eye" class="feather-eye"></i>
+                                                </a>
+                                                <a href="@Url.Action("EditarNotificaciones", "Home")" class="p-2">
+                                                    <i data-feather="edit" class="feather-edit"></i>
+                                                </a>
+                                                <a href="#" class="confirm-text p-2">
+                                                    <i data-feather="trash-2" class="feather-trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="clickable-row">
+                                        <td>
+                                            <label class="checkboxs">
+                                                <input type="checkbox">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </td>
+                                        <td><span class="mail-important"><i class="far fa-star"></i></span></td>
+                                        <td class="name">Nuevo menú de desayunos</td>
+                                        <td class="subject">Disfruta de nuestras nuevas opciones de desayuno con productos recién horneados.</td>
+                                        <td></td>
+                                        <td class="mail-date">21 Aug</td>
+                                        <td>
+                                            <div class="edit-delete-action">
+                                                <a href="@Url.Action("VerNotificacion", "Home")" class="p-2">
+                                                    <i data-feather="eye" class="feather-eye"></i>
+                                                </a>
+                                                <a href="@Url.Action("EditarNotificaciones", "Home")" class="p-2">
+                                                    <i data-feather="edit" class="feather-edit"></i>
+                                                </a>
+                                                <a href="#" class="confirm-text p-2">
+                                                    <i data-feather="trash-2" class="feather-trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="clickable-row">
+                                        <td>
+                                            <label class="checkboxs">
+                                                <input type="checkbox">
+                                                <span class="checkmarks"></span>
+                                            </label>
+                                        </td>
+                                        <td><span class="mail-important"><i class="far fa-star"></i></span></td>
+                                        <td class="name">Día del Padre</td>
+                                        <td class="subject">Regala un delicioso pastel personalizado para el Día del Padre.</td>
+                                        <td></td>
+                                        <td class="mail-date">1 Aug</td>
+                                        <td>
+                                            <div class="edit-delete-action">
+                                                <a href="@Url.Action("VerNotificacion", "Home")" class="p-2">
+                                                    <i data-feather="eye" class="feather-eye"></i>
+                                                </a>
+                                                <a href="@Url.Action("EditarNotificaciones", "Home")" class="p-2">
+                                                    <i data-feather="edit" class="feather-edit"></i>
+                                                </a>
+                                                <a href="#" class="confirm-text p-2">
+                                                    <i data-feather="trash-2" class="feather-trash-2"></i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+﻿@{
+    ViewData["Title"] = "Accounting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Lista de Transacciones</h4>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <table id="transacciones-tabla" class="table datanew">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Cuenta</th>
+                            <th>Monto</th>
+                            <th>Fecha</th>
+                            <th>Descripción</th>
+                            <th class="no-sort">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ingreso</td>
+                            <td>Caja</td>
+                            <td>$5,000.00</td>
+                            <td>2023-06-01</td>
+                            <td>Ingresos por ventas de pan y pasteles</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                    
+                                    <a href="@Url.Action("EditarTransaccion", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Gasto</td>
+                            <td>Caja</td>
+                            <td>$2,500.00</td>
+                            <td>2023-06-10</td>
+                            <td>Compra de insumos para la panadería</td>
+                            <td>
+                                <div class="edit-delete-action">
+                                   
+                                    <a href="@Url.Action("EditarTransaccion", "Accounting")" class="p-2">
+                                        <i data-feather="edit" class="feather-edit"></i>
+                                    </a>
+                                    <a href="#" class="confirm-text p-2">
+                                        <i data-feather="trash-2" class="feather-trash-2"></i>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

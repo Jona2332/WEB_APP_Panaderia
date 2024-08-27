@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Accounting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Editar Cuenta Contable</h4>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form id="editar-cuenta-form">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="cuenta-nombre">Nombre de la cuenta:</label>
+                                <input type="text" id="cuenta-nombre" name="cuenta-nombre" value="[Nombre actual de la cuenta]" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="cuenta-descripcion">Descripción:</label>
+                                <textarea id="cuenta-descripcion" name="cuenta-descripcion" class="form-control" required>[Descripción actual de la cuenta]</textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-blocks">
+                                <label for="cuenta-tipo">Tipo de cuenta:</label>
+                                <select id="cuenta-tipo" name="cuenta-tipo" class="select" required>
+                                    <option value="[Tipo actual de la cuenta]" selected>[Tipo actual de la cuenta]</option>
+                                    <option value="activo">Activo</option>
+                                    <option value="pasivo">Pasivo</option>
+                                    <option value="ingreso">Ingreso</option>
+                                    <option value="gasto">Gasto</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Guardar cambios</button>
+                    <a href="javascript:history.back()" class="btn btn-primary mr-2">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

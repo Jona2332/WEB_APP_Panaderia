@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header row">
+            <div class="col">
+                <div class="page-title">
+                    <h4>Nueva Notificación</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label>Título</label>
+                        <input type="text" class="form-control" placeholder="Ingrese el título de la notificación">
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Mensaje</label>
+                        <textarea class="form-control" rows="5" placeholder="Ingrese el mensaje de la notificación"></textarea>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Fecha de Creación</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Fecha de Vencimiento</label>
+                        <input type="date" class="form-control">
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label>Estado</label>
+                        <select class="form-control">
+                            <option value="active">Activa</option>
+                            <option value="inactive">Inactiva</option>
+                        </select>
+                    </div>
+                    <br />
+                    <div class="form-group text-right">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <a href="javascript:history.back()" class="btn btn-primary mr-2">Volver</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

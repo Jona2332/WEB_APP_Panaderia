@@ -1,0 +1,221 @@
+﻿@model WEB_APP_Panaderia.Models.OrdenesPizzeriaViewModel
+@{
+    ViewData["Title"] = "Ordenes Pizzeria";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- /Sidebar -->
+
+			<div class="page-wrapper">
+				<div class="content">
+					<div class="page-header">
+						<div class="add-item d-flex">
+							<div class="page-title">
+								<h4>Lista de Ordenes</h4>
+								<h6>Aquí se pueden ver todas las ordenes pendientes y en progreso que entran desde el punto de venta. Haz click en "Ver" para los detalles de la orden.</h6>
+								<br />
+								<h6 style="font-weight: bold;">Asegúrate de cambiar el estado de una orden, cuándo estés listo/a para tomarla.</h6>
+
+							</div>
+						</div>
+						<ul class="table-top-head">
+							<li>
+								<a data-bs-toggle="tooltip" data-bs-placement="top" title="Collapse" id="collapse-header"><i data-feather="chevron-up" class="feather-chevron-up"></i></a>
+							</li>
+						</ul>
+					</div>
+					
+
+					<!-- /product list -->
+					<div class="card table-list-card">
+						<div class="card-body">
+							<div class="table-top">
+								<div class="search-set">
+									<div class="search-input">
+										<a href="" class="btn btn-searchset"><i data-feather="search" class="feather-search"></i></a>
+									</div>
+								</div>
+								<div class="search-path">
+								</div>
+							</div>
+					<!-- /product list -->
+
+				<div class="table-responsive product-list">
+					@if (ViewData["Message"] != null)
+					{
+						<div>@ViewData["Message"]</div>
+					}
+					else
+					{
+						@if (Model.Ordenes == null)
+						{
+							<div class="alert alert-warning" role="alert">
+								No hay registros de ordenes.
+							</div>
+						}
+						else
+						{
+							<table class="table datanew">
+								<thead>
+
+									<tr>
+										<th>Núm de Orden</th>
+										<th>Servicio</th>
+										<th>Cliente</th>
+										<th>Estado de la Orden</th>
+										<th class="no-sort">Ver</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach (var orden in Model.Ordenes)
+									{
+										<tr id="orden-@orden.idOrden">
+											<td><span class="badge text-bg-info"><h4>@orden.idOrden</h4></span></td>
+											<td>
+												@if (orden.metodoPago == "Uber Eats")
+												{
+													<span class="badge text-bg-light"><h4>Uber Eats</h4></span>
+												}
+												else
+												{
+													<span class="badge text-bg-light"><h4>@(orden.express ? "Express" : "Cliente-Salón")</h4></span>
+												}
+											</td>
+											<td><span class="badge text-bg-light"><h4>@orden.nombreCliente</h4></span></td>
+											<td class="estado-orden-cell">
+												@if (orden.estado == "Pendiente")
+												{
+													<span class="badges text-bg-secondary">@orden.estado</span>
+												}
+												else if (orden.estado == "En Progreso")
+												{
+													<span class="badges text-bg-warning">@orden.estado</span>
+												}
+												else if (orden.estado == "Completado")
+												{
+													<span class="badges text-bg-success">@orden.estado</span>
+												}
+											</td>
+											<td class="action-table-data">
+												<div class="edit-delete-action">
+													<a class="me-2 p-2 mb-0" onclick="consultarDetallesOrden(@orden.idOrden)">
+														<i data-feather="eye" class="action-eye"></i>
+													</a>
+												</div>
+											</td>
+										</tr>
+									}
+								</tbody>
+
+
+							</table>
+						}
+					}
+				</div>
+						</div>
+					</div>
+					<!-- /product list -->
+				</div>
+			</div>
+        </div>
+		<!-- /Main Wrapper -->
+
+<!-- Detalle Orden -->
+<div class="modal fade" id="detalle-orden">
+	<div class="modal-dialog edit-sales-modal">
+		<div class="modal-content">
+			<div class="page-wrapper p-0 m-0">
+				<div class="content p-0">
+					<div class="page-header p-3 mb-0">
+						<div class="add-item new-sale-items d-flex">
+							<div class="page-title">
+								<h4>Orden</h4>
+								<h4><span class="badge bg-info d-inline-block mb-0">#666614</span></h4>
+							</div>
+							<div class="page-title">
+								<h4>Express/Cliente-Salón</h4>
+								<h4><span class="badge bg-warning d-inline-block mb-0">Cliente-Salón</span></h4>
+							</div>
+							
+
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-lg-4 col-sm-6 col-12">
+									<div class="input-blocks">
+										<label>Nombre Cliente</label>
+										<div class="row">
+											<div class="col-lg-10 col-sm-10 col-10">
+												<input disabled type="text" placeholder="Cliente">
+											</div>
+										</div>
+									</div>
+									<div class="input-blocks">
+										<label>Direccion</label>
+										<div class="row">
+											<div class="col-lg-10 col-sm-10 col-10">
+												<textarea disabled type="text" placeholder="Dirección"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="input-blocks">
+										<label>Teléfono</label>
+										<div class="row">
+											<div class="col-lg-10 col-sm-10 col-10">
+												<input disabled type="text" placeholder="Teléfono">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table datanew">
+									<thead>
+										<tr>
+											<th>Producto</th>
+											<th>Cantidad</th>
+											<th>Tipo</th>
+											<th>Sabores</th>
+											<th>Nota</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- Renderizar dinamicamente -->
+									</tbody>
+								</table>
+							</div>
+							<div class="col-lg-2">
+								<div class="estado-container">
+									<h4>Estado</h4>
+									<select class="select estado-orden" required name="id_estado" id="id_estado"></select>
+									<br />
+									<span class="badges text-bg-secondary estado-span"></span>
+								</div>
+							</div>
+							<div class="col-lg-12 text-end">
+								<button type="button" class="btn btn-cancel add-cancel me-3" data-bs-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-submit add-sale" id="actualizar-orden-btn">Actualizar Orden</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+@section Scripts {
+	<script>
+		$(document).ready(function () {
+			if (!$('body').hasClass('mini-sidebar')) {
+				$('body').addClass('mini-sidebar');
+			}
+		});
+	</script>
+}
+

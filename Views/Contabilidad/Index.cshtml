@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Contabilidad";
+}
+
+<div class="page-wrapper">
+    <div class="content">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Módulo de Contabilidad</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                        <li class="breadcrumb-item active">Contabilidad</li>
+                    </ul>
+                </div>
+                <div class="col-auto">
+                    <a href="#" id="collapse-header" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Colapsar">
+                        <i data-feather="chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title mb-4">Opciones Contables</h4>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-3">
+                        <a asp-action="CuentasContables" class="btn btn-primary btn-block">
+                            <i class="fas fa-book mr-2"></i> Cuentas Contables
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a asp-action="EstadoResultados" class="btn btn-success btn-block">
+                            <i class="fas fa-chart-line mr-2"></i> Estado de Resultados
+                        </a>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <a asp-action="BalanceGeneral" class="btn btn-info btn-block">
+                            <i class="fas fa-balance-scale mr-2"></i> Balance General
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+﻿@model WEB_APP_Panaderia.Entities.UsuariosEntities
+@{
+    ViewData["Title"] = "Ingresar";
+    Layout = "~/Views/Shared/_Layout_Login.cshtml";
+}
+
+<!-- Main Wrapper -->
+        <div class="main-wrapper">
+			<div class="account-content">
+				<div class="login-wrapper login-new">
+                    <div class="container">
+                        <div class="login-content user-login">
+                            <div class="login-logo">
+                                <img src="~/assets/img/logo-pizzeria.png" alt="img">
+                                <a href="" class="login-logo logo-white">
+                                    <img src="~/assets/img/logo-white.png"  alt="">
+                                </a>
+
+                            </div>
+                                <div class="login-userset">
+                                    <div class="login-userheading">
+                                        <h3>Inicio de Sesión</h3>
+                                        <h4>Inicie sesión en el sistema con su correo y contraseña.</h4>
+                                    </div>
+                        @using (Html.BeginForm("ValidarCredenciales", "Usuarios", FormMethod.Post, new { @class = "pt-3" }))
+                        {
+                            <div class="form-login">
+                                <label class="form-label">Correo electrónico</label>
+                                <div class="form-addons">
+                                    @Html.TextBoxFor(m => m.correo, new { @class = "form-control", @onblur = "validarCampoCorreo();", @placeholder = "Correo", @required = true })
+                                    <span id="alertaCorreo"></span>
+                                    <img src="~/assets/img/icons/mail.svg" alt="img">
+                                </div>
+                            </div>
+                            <div class="form-login">
+                                <label>Contraseña</label>
+                                <div class="pass-group">
+                                    @Html.TextBoxFor(m => m.contrasenna, new { @class = "pass-input", @type = "password", @onblur = "validarCampoContrasenna();", @placeholder = "Contraseña", @required = true })
+                                    <span class="fas toggle-password fa-eye-slash"></span>
+                                    <span class="alert-danger" id="alertaContrasenna"></span>
+                                </div>
+
+                            </div>
+                            <div class="form-login authentication-check">
+                                <div class="row">
+                                    <div class="col-6">
+
+                                    </div>
+                                    <div class="col-6 text-end">
+                                        <a class="forgot-link" href="@Url.Action("Recuperar_contrasenna","Home")">¿Olvidó su contraseña?</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-login">
+                     
+                                <input type="submit" id="btnIniciarSesion" class="btn btn-login" value="Iniciar Sesión" />
+                            </div>
+                       
+
+                            @if (@TempData["mensaje"] != null)
+                            {
+                                <div class="alert alert-warning" role="alert">
+                                    <h6> @Html.Raw(TempData["mensaje"].ToString().Replace("\n", "<br>"))</h6>
+                                </div>
+                            }
+               
+
+                        }  
+                        
+                    </div>
+                       
+                           
+                        </div>
+                        <div class="my-4 d-flex justify-content-center align-items-center copyright-text">
+                    <p>Derechos de autor &copy; Proyecto Panaderia Tres Rios. Todos los derechos reservados</p>
+                        </div>
+                    </div>
+                </div>
+			</div>
+        </div>
+		<!-- /Main Wrapper -->
+		

@@ -1,0 +1,212 @@
+﻿@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var id_usuario = Context.Session.GetString("id_usuario")?.ToString();
+    var usuario = Context.Session.GetString("Correo")?.ToString();
+    var nombre = Context.Session.GetString("Nombre")?.ToString();
+    var rol = Context.Session.GetString("Rol")?.ToString();
+
+
+}
+<div class="page-wrapper">
+    <div class="content">
+        <div class="welcome d-lg-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center welcome-text">
+                <h3 class="d-flex align-items-center"><img src="~/assets/img/icons/hi.svg" alt="img">&nbsp;Hola @nombre,</h3>&nbsp;<h6>Mira un resumen de tu tienda hoy.</h6>
+            </div>
+            <div class="d-flex align-items-center">
+                <div class="position-relative daterange-wraper me-2">
+                </div>
+                <a href="#" class="d-none d-lg-inline-block" data-bs-toggle="tooltip" data-bs-placement="top" title="Collapse" id="collapse-header"><i data-feather="chevron-up" class="feather-16"></i></a>
+            </div>
+        </div>
+        <div class="row sales-cards">
+            <div class="col-xl-6 col-sm-12 col-12">
+                <div class="card d-flex align-items-center justify-content-between default-cover mb-4">
+                    <div>
+                        <h6>Ganancia Semanal</h6>
+                        <h3>₡<span class="counters weekly-earnings" data-count="">0</span></h3>
+                        <p class="sales-range"><span class="text-success"><i data-feather="chevron-up" class="feather-16"></i>48%&nbsp;</span>Aumento en comparación con la semana pasada</p>
+                    </div>
+                    <img src="~/assets/img/icons/weekly-earning.svg" alt="img">
+                </div>
+
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card color-info bg-primary mb-4">
+                    <img src="~/assets/img/icons/total-sales.svg" alt="img">
+                    <h3 class="counters total-sales" data-count="">Cargando</h3>
+                    <p>Total de Ventas por semana</p>
+
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card color-info bg-secondary mb-4">
+                    <img src="~/assets/img/icons/purchased-earnings.svg" alt="img">
+                    <h3 class="counters daily-sales" data-count=""></h3>
+                    <p>Total de Ventas por dia</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-xl-4 d-flex">
+                <div class="card flex-fill default-cover w-100 mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0">Total de Ventas por día</h4>
+                        <div class="dropdown">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-borderless best-seller">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="product-info">
+                                                <div class="info">
+                                                    <a href="">--</a>
+                                                    <p class="dull-text">--</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="head-text">Ventas</p>
+                                            --
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="product-info">
+
+                                                <div class="info">
+                                                    <a href="product-list.html">--</a>
+                                                    <p class="dull-text">--</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="head-text">Ventas</p>
+                                            --
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="product-info">
+
+                                                <div class="info">
+                                                    <a href="product-list.html">--</a>
+                                                    <p class="dull-text">--</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="head-text">Ventas</p>
+                                            --
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="product-info">
+
+                                                <div class="info">
+                                                    <a href="product-list.html">--</a>
+                                                    <p class="dull-text">--</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="head-text">Ventas</p>
+                                            --
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="product-info">
+
+                                                <div class="info">
+                                                    <a href="product-list.html">--</a>
+                                                    <p class="dull-text">--</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="head-text">Ventas</p>
+                                            --
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-xl-8 d-flex">
+                <div class="card flex-fill default-cover w-100 mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="card-title mb-0">Transacciones Recientes</h4>
+                        <div class="dropdown">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table datanew table-borderless recent-transactions">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Detalles de la Orden</th>
+                                        <th>Pago</th>
+                                        <th>Estado</th>
+                                        <th>Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>--</td>
+                                        <td>
+                                            <div class="product-info">
+                                                <a href="-" class="product-img">
+
+                                                </a>
+                                                <div class="info">
+                                                    <a href="">--</a>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="d-block head-text">--</span>
+                                            <span class="text-blue">#--</span>
+                                        </td>
+                                        <td><span class="badge background-less border-success">--</span></td>
+                                        <td>--</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Chart -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Valor Restante de Lotes</h5>
+                </div>
+                <div class="card-body">
+                    <div id="s-col" class="chart-set"></div>
+                </div>
+            </div>
+        </div>
+        <!-- /Chart -->
+
+    </div>
+</div>

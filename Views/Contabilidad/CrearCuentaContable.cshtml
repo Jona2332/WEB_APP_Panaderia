@@ -1,0 +1,72 @@
+﻿@model WEB_APP_Panaderia.Entities.CuentaContableEntity
+
+<div class="page-wrapper">
+    <div class="content container-fluid">
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Módulo de Contabilidad</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                        <li class="breadcrumb-item"><a href="/Contabilidad">Contabilidad</a></li>
+                        <li class="breadcrumb-item active">Crear Cuenta Contable</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title mb-0">Crear Nueva Cuenta Contable</h4>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="CrearCuentaContable">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label asp-for="CodigoCuenta" class="form-label">Código</label>
+                                        <input asp-for="CodigoCuenta" class="form-control" />
+                                        <span asp-validation-for="CodigoCuenta" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label asp-for="NombreCuenta" class="form-label">Nombre</label>
+                                        <input asp-for="NombreCuenta" class="form-control" />
+                                        <span asp-validation-for="NombreCuenta" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group mb-3">
+                                        <label asp-for="TipoCuenta" class="form-label">Tipo</label>
+                                        <select asp-for="TipoCuenta" class="form-select">
+                                            <option value="">Seleccione un tipo</option>
+                                            <option value="Activo">Activo</option>
+                                            <option value="Pasivo">Pasivo</option>
+                                            <option value="Capital">Capital</option>
+                                            <option value="Ingreso">Ingreso</option>
+                                            <option value="Gasto">Gasto</option>
+                                        </select>
+                                        <span asp-validation-for="TipoCuenta" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-end mt-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-2"></i>Crear Cuenta
+                                </button>
+                                <a href="/Contabilidad/CuentasContables" class="btn btn-secondary ms-2">
+                                    <i class="fas fa-arrow-left me-2"></i>Volver
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

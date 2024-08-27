@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<meta name="description" content="POS - Bootstrap Admin Template">
+	<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, invoice, html5, responsive, Projects">
+	<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+	<meta name="robots" content="noindex, nofollow">
+
+	<title>@ViewData["Title"] - Panadería Tres Rios</title>
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="~/assets/css/bootstrap.min.css">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="~/assets/css/bootstrap-datetimepicker.min.css">
+
+	<!-- animation CSS -->
+	<link rel="stylesheet" href="~/assets/css/animate.css">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="~/assets/plugins/select2/css/select2.min.css">
+
+	<!-- Datatable CSS -->
+	<link rel="stylesheet" href="~/assets/css/dataTables.bootstrap5.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="~/assets/plugins/fontawesome/css/all.min.css">
+
+	<!-- Daterangepikcer CSS -->
+	<link rel="stylesheet" href="~/assets/plugins/daterangepicker/daterangepicker.css">
+
+	<!-- Owl Carousel CSS -->
+	<link rel="stylesheet" href="~/assets/plugins/owlcarousel/owl.carousel.min.css">
+	<link rel="stylesheet" href="~/assets/plugins/owlcarousel/owl.theme.default.min.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="~/assets/css/style.css">
+</head>
+<body>
+
+	@{
+		var id_usuario = Context.Session.GetString("id_usuario")?.ToString();
+		var usuario = Context.Session.GetString("Correo")?.ToString();
+		var nombre = Context.Session.GetString("Nombre")?.ToString();
+		var rol = Context.Session.GetString("Rol")?.ToString();
+
+
+	}
+    <div>
+        @RenderBody()
+    </div>
+	<!-- jQuery -->
+	<script src="~/assets/js/jquery-3.7.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="~/assets/js/feather.min.js"></script>
+
+	<!-- Slimscroll JS -->
+	<script src="~/assets/js/jquery.slimscroll.min.js"></script>
+
+	<!-- Datatable JS -->
+	<script src="~/assets/js/jquery.dataTables.min.js"></script>
+	<script src="~/assets/js/dataTables.bootstrap5.min.js"></script>
+
+	<!-- Bootstrap Core JS -->
+	<script src="~/assets/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Chart JS -->
+	<script src="~/assets/plugins/apexchart/apexcharts.min.js"></script>
+	<script src="~/assets/plugins/apexchart/chart-data.js"></script>
+
+	<!-- Daterangepikcer JS -->
+	<script src="~/assets/js/moment.min.js"></script>
+	<script src="~/assets/plugins/daterangepicker/daterangepicker.js"></script>
+
+	<!-- Owl JS -->
+	<script src="~/assets/plugins/owlcarousel/owl.carousel.min.js"></script>
+
+	<!-- Select2 JS -->
+	<script src="~/assets/plugins/select2/js/select2.min.js"></script>
+
+	<!-- Sweetalert 2 -->
+	<script src="~/assets/plugins/sweetalert/sweetalert2.all.min.js"></script>
+	<script src="~/assets/plugins/sweetalert/sweetalerts.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="~/assets/js/theme-script.js"></script>
+	<script src="~/assets/js/script.js"></script>
+	<script src="~/js/punto-de-venta.js"></script>
+
+	<!-- Descarga PDF JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
